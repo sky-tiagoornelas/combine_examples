@@ -11,7 +11,24 @@ final class PublisherOperatorsViewController: BaseViewController {
         title = "PublisherOperators"
     }
     
+    struct OBJ : Hashable, Equatable, Codable {
+        let lastUpdated: String
+    }
+    
+//    let myObject = OBJ(lastUpdated: "")
+    public var myObject: CurrentValueSubject<String, Never> = CurrentValueSubject<String, Never>("")
+
+    
     override func onSubscribeTapped() {
+
+        let cancellable = Timer.publish(every: 1, on: .main, in: .default)
+            .autoconnect()
+            .receive(on: DispatchQueue.main)
+            .map { DateFormatter().string(from: $0) }
+            .assign(to: \.value, on: myObject)
+
+        
+        cancellable.cancel()
         
         log("Subscribed!")
         

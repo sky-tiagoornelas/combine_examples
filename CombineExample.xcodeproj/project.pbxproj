@@ -21,6 +21,13 @@
 		F64723462898049000D4AD8E /* PublisherOperatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64723452898049000D4AD8E /* PublisherOperatorsViewController.swift */; };
 		F66BB24A2898798100AB9668 /* UIValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB2492898798100AB9668 /* UIValidationViewController.swift */; };
 		F66BB24C28991B4000AB9668 /* UsernameRemoteValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB24B28991B4000AB9668 /* UsernameRemoteValidationViewController.swift */; };
+		F66BB24F2899BF0000AB9668 /* StoreExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB24E2899BF0000AB9668 /* StoreExampleViewController.swift */; };
+		F66BB2522899BFEA00AB9668 /* StoreExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB2512899BFEA00AB9668 /* StoreExampleViewModel.swift */; };
+		F66BB2542899C09800AB9668 /* ObserveNamesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB2532899C09800AB9668 /* ObserveNamesUseCase.swift */; };
+		F66BB2562899C11100AB9668 /* NamesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB2552899C11100AB9668 /* NamesRepository.swift */; };
+		F66BB25A2899C44100AB9668 /* NamesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB2592899C44100AB9668 /* NamesStore.swift */; };
+		F66BB25C2899CA8900AB9668 /* SaveNameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB25B2899CA8900AB9668 /* SaveNameUseCase.swift */; };
+		F66BB25E2899CB7F00AB9668 /* GetNamesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB25D2899CB7F00AB9668 /* GetNamesUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +47,13 @@
 		F64723452898049000D4AD8E /* PublisherOperatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherOperatorsViewController.swift; sourceTree = "<group>"; };
 		F66BB2492898798100AB9668 /* UIValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIValidationViewController.swift; sourceTree = "<group>"; };
 		F66BB24B28991B4000AB9668 /* UsernameRemoteValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameRemoteValidationViewController.swift; sourceTree = "<group>"; };
+		F66BB24E2899BF0000AB9668 /* StoreExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreExampleViewController.swift; sourceTree = "<group>"; };
+		F66BB2512899BFEA00AB9668 /* StoreExampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreExampleViewModel.swift; sourceTree = "<group>"; };
+		F66BB2532899C09800AB9668 /* ObserveNamesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveNamesUseCase.swift; sourceTree = "<group>"; };
+		F66BB2552899C11100AB9668 /* NamesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesRepository.swift; sourceTree = "<group>"; };
+		F66BB2592899C44100AB9668 /* NamesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesStore.swift; sourceTree = "<group>"; };
+		F66BB25B2899CA8900AB9668 /* SaveNameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNameUseCase.swift; sourceTree = "<group>"; };
+		F66BB25D2899CB7F00AB9668 /* GetNamesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNamesUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +86,7 @@
 		F64723252896E6D100D4AD8E /* CombineExample */ = {
 			isa = PBXGroup;
 			children = (
+				F66BB2502899BF0300AB9668 /* Example */,
 				F64723262896E6D100D4AD8E /* AppDelegate.swift */,
 				F64723282896E6D100D4AD8E /* SceneDelegate.swift */,
 				F647232A2896E6D100D4AD8E /* ViewController.swift */,
@@ -89,6 +104,20 @@
 				F66BB24B28991B4000AB9668 /* UsernameRemoteValidationViewController.swift */,
 			);
 			path = CombineExample;
+			sourceTree = "<group>";
+		};
+		F66BB2502899BF0300AB9668 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				F66BB24E2899BF0000AB9668 /* StoreExampleViewController.swift */,
+				F66BB2512899BFEA00AB9668 /* StoreExampleViewModel.swift */,
+				F66BB2532899C09800AB9668 /* ObserveNamesUseCase.swift */,
+				F66BB2552899C11100AB9668 /* NamesRepository.swift */,
+				F66BB2592899C44100AB9668 /* NamesStore.swift */,
+				F66BB25B2899CA8900AB9668 /* SaveNameUseCase.swift */,
+				F66BB25D2899CB7F00AB9668 /* GetNamesUseCase.swift */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,15 +192,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				F647233D2897D81000D4AD8E /* BaseViewController.swift in Sources */,
+				F66BB25E2899CB7F00AB9668 /* GetNamesUseCase.swift in Sources */,
+				F66BB2542899C09800AB9668 /* ObserveNamesUseCase.swift in Sources */,
 				F647233F2897DBBC00D4AD8E /* FutureViewController.swift in Sources */,
 				F647232B2896E6D100D4AD8E /* ViewController.swift in Sources */,
 				F64723462898049000D4AD8E /* PublisherOperatorsViewController.swift in Sources */,
 				F64723272896E6D100D4AD8E /* AppDelegate.swift in Sources */,
 				F647233B2896ECA400D4AD8E /* CustomNotificationViewController.swift in Sources */,
+				F66BB2562899C11100AB9668 /* NamesRepository.swift in Sources */,
 				F66BB24C28991B4000AB9668 /* UsernameRemoteValidationViewController.swift in Sources */,
 				F64723442898026D00D4AD8E /* BackgroundForegroundViewController.swift in Sources */,
+				F66BB25C2899CA8900AB9668 /* SaveNameUseCase.swift in Sources */,
 				F64723292896E6D100D4AD8E /* SceneDelegate.swift in Sources */,
 				F66BB24A2898798100AB9668 /* UIValidationViewController.swift in Sources */,
+				F66BB25A2899C44100AB9668 /* NamesStore.swift in Sources */,
+				F66BB24F2899BF0000AB9668 /* StoreExampleViewController.swift in Sources */,
+				F66BB2522899BFEA00AB9668 /* StoreExampleViewModel.swift in Sources */,
 				F64723412897E6E600D4AD8E /* DeferredWithFutureViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
