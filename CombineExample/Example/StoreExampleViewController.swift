@@ -93,13 +93,17 @@ final class StoreExampleViewController: UIViewController {
     }
     
     func onDeleteTapped() {
-        
+        viewModel.deleteNames()
     }
 }
 
 extension StoreExampleViewController: StoreExampleViewModelDeletage {
     func onErrorSaving() {
-        // TODO
+        DispatchQueue.main.async {
+            let alertViewController = UIAlertController(title: "Error", message: "Error saving name. Please try again later", preferredStyle: .alert)
+            alertViewController.addAction(UIAlertAction(title: "Close", style: .cancel))
+            self.present(alertViewController, animated: false)
+        }
     }
     
     func onNames(names: [String]) {

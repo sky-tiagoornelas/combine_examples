@@ -3,7 +3,7 @@ import Combine
 protocol StoreExampleViewModel {
     func fetchNames()
     func saveName(name: String)
-    func namesPublisher() -> AnyPublisher<[String], Never>
+    func deleteNames()
 }
 
 protocol StoreExampleViewModelDeletage: AnyObject {
@@ -19,16 +19,16 @@ final class StoreExampleViewModelImpl: StoreExampleViewModel {
     
     let saveNameUseCase: SaveNameUseCase
     let getNamesUseCase: GetNamesUseCase
-    let observeNamesUseCase: ObserveNamesUseCase
-
+    let deleteNamesUseCase: DeleteNamesUseCase
+    
     init(
         saveNameUseCase: SaveNameUseCase = SaveNameUseCaseImpl(),
         getNamesUseCase: GetNamesUseCase = GetNamesUseCaseImpl(),
-        observeNamesUseCase: ObserveNamesUseCase = ObserveNamesUseCaseImpl()
+        deleteNamesUseCase: DeleteNamesUseCase = DeleteNamesUseCaseImpl()
     ) {
         self.saveNameUseCase = saveNameUseCase
         self.getNamesUseCase = getNamesUseCase
-        self.observeNamesUseCase = observeNamesUseCase
+        self.deleteNamesUseCase = deleteNamesUseCase
     }
     
     func fetchNames() {
@@ -55,6 +55,25 @@ final class StoreExampleViewModelImpl: StoreExampleViewModel {
         }
     }
 
+    func deleteNames() {
+        delegate?.showLoading()
+
+        deleteNamesUseCase.execute() { result in
+            switch result {
+            case .success:
+                self.getNamesUseCase.execute { result in
+                    self.handleFetchResult(result: result)
+                    self.delegate?.hideLoading()
+                }
+            case .failure:
+                self.delegate?.onErrorSaving()
+                self.delegate?.hideLoading()
+            }
+        }
+    }
+}
+
+extension StoreExampleViewModelImpl {
     private func handleFetchResult(result: Result<[String], Error>) {
         switch result {
         case let .success(names):
@@ -62,9 +81,5 @@ final class StoreExampleViewModelImpl: StoreExampleViewModel {
         case .failure:
             delegate?.onErrorSaving()
         }
-    }
-
-    func namesPublisher() -> AnyPublisher<[String], Never> {
-        return observeNamesUseCase.observe()
     }
 }
