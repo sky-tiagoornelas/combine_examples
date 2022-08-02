@@ -14,33 +14,24 @@ final class FutureViewController: BaseViewController {
     	
     override func onSubscribeTapped() {
         
-        guard cancellables.isEmpty else {
-            log("Already subscribed")
-            return
+        let publisher = Future<String, Error> { promise in
+            if self.count % 2 == 0 {
+                promise(.success("A value"))
+            } else {
+                promise(.failure(FutureError()))
+            }
+            
+            self.count += 1
         }
-        
-        let publisher: Future = {
-            return Future<String, Error> { promise in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    if self.count % 2 == 0 {
-                        promise(.success("A value"))
-                    } else {
-                        promise(.failure(FutureError()))
-                    }
-                    
-                    self.count += 1
-                }
-            }
-        }()
                 
-        publisher.eraseToAnyPublisher().sink(receiveCompletion: { [weak self] completion in
-            switch completion {
-            case .finished:
-                self?.log("Completed")
-            case let .failure(error):
-                self?.log("Failed with error \(error)")
-            }
-            self?.onCancelTapped()
+        publisher
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished:
+                    self?.log("Completed")
+                case let .failure(error):
+                    self?.log("Failed with error \(error)")
+                }
         }, receiveValue: { [weak self] value in
             self?.log("Received \(value)")
         }).store(in: &cancellables)

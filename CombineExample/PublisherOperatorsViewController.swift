@@ -19,9 +19,9 @@ final class PublisherOperatorsViewController: BaseViewController {
         
         publisher
             .compactMap { $0 }
+            .dropFirst()
             .filter { $0.isMultiple(of: 2) }
             .receive(on: DispatchQueue.main)
-            .dropFirst()
             .sink (receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:

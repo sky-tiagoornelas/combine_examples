@@ -2,6 +2,7 @@ import UIKit
 import Combine
 
 final class BackgroundForegroundViewController: BaseViewController {
+    
     lazy var enterBackgroundPublisher: NotificationCenter.Publisher = {
         return NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification, object: nil)
     }()
@@ -12,7 +13,7 @@ final class BackgroundForegroundViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "background/foreground NSNotification"
+        title = "NSNotification"
         
         stackView.isHidden = true
         
