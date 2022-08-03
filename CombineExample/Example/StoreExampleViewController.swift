@@ -1,4 +1,3 @@
-import Combine
 import UIKit
 
 final class StoreExampleViewController: UIViewController {
@@ -95,9 +94,13 @@ final class StoreExampleViewController: UIViewController {
     func onDeleteTapped() {
         viewModel.deleteNames()
     }
+    
+    func format(array: [String]) -> String {
+        return array.joined(separator: ", ")
+    }
 }
 
-extension StoreExampleViewController: StoreExampleViewModelDeletage {
+extension StoreExampleViewController: StoreExampleViewModelDelegate {
     func onErrorSaving() {
         DispatchQueue.main.async {
             let alertViewController = UIAlertController(title: "Error", message: "Error saving name. Please try again later", preferredStyle: .alert)
@@ -108,9 +111,7 @@ extension StoreExampleViewController: StoreExampleViewModelDeletage {
     
     func onNames(names: [String]) {
         DispatchQueue.main.async {
-            self.results.text = names.map {
-                String($0)
-            }.joined(separator: ",")
+            self.results.text = self.format(array: names)
         }
     }
     

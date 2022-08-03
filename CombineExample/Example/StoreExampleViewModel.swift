@@ -1,12 +1,10 @@
-import Combine
-
 protocol StoreExampleViewModel {
     func fetchNames()
     func saveName(name: String)
     func deleteNames()
 }
 
-protocol StoreExampleViewModelDeletage: AnyObject {
+protocol StoreExampleViewModelDelegate: AnyObject {
     func onErrorSaving()
     func onNames(names: [String])
     func showLoading()
@@ -15,11 +13,11 @@ protocol StoreExampleViewModelDeletage: AnyObject {
 
 final class StoreExampleViewModelImpl: StoreExampleViewModel {
     
-    weak var delegate: StoreExampleViewModelDeletage?
+    weak var delegate: StoreExampleViewModelDelegate?
     
-    let saveNameUseCase: SaveNameUseCase
-    let getNamesUseCase: GetNamesUseCase
-    let deleteNamesUseCase: DeleteNamesUseCase
+    private let saveNameUseCase: SaveNameUseCase
+    private let getNamesUseCase: GetNamesUseCase
+    private let deleteNamesUseCase: DeleteNamesUseCase
     
     init(
         saveNameUseCase: SaveNameUseCase = SaveNameUseCaseImpl(),

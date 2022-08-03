@@ -1,28 +1,17 @@
-import Combine
-
 protocol NamesStore {
     func set(names: [String])
     func add(newName: String)
     func get() -> [String]
     func remove()
-    
-    func observe() -> AnyPublisher<[String], Never>
 }
 
 final class NamesStoreImpl: NamesStore {
     
     static let shared = NamesStoreImpl()
-    private let publisher: CurrentValueSubject<[String], Never>
     
-    private var namesDb = [String]() {
-        didSet {
-            publisher.send(namesDb)
-        }
-    }
+    private var namesDb = [String]()
     
-    private init() {
-        publisher = CurrentValueSubject(namesDb)
-    }
+    private init() {}
     
     func set(names: [String]) {
         namesDb = names
@@ -38,9 +27,5 @@ final class NamesStoreImpl: NamesStore {
     
     func remove() {
         namesDb.removeAll()
-    }
-    
-    func observe() -> AnyPublisher<[String], Never> {
-        return publisher.eraseToAnyPublisher()
     }
 }
