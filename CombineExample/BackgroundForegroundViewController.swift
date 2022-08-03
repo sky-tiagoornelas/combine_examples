@@ -16,7 +16,7 @@ final class BackgroundForegroundViewController: BaseViewController {
         title = "NSNotification"
         
         stackView.isHidden = true
-
+        
         self.enterBackgroundPublisher.sink(receiveValue: { [weak self] value in
             self?.log(value.debugDescription)
         }).store(in: &self.cancellables)

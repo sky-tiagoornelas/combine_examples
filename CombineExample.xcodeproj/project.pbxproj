@@ -109,15 +109,23 @@
 		F66BB2502899BF0300AB9668 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				F66BB2C5289A751A00AB9668 /* UseCases */,
 				F66BB24E2899BF0000AB9668 /* StoreExampleViewController.swift */,
 				F66BB2512899BFEA00AB9668 /* StoreExampleViewModel.swift */,
 				F66BB2552899C11100AB9668 /* NamesRepository.swift */,
 				F66BB2592899C44100AB9668 /* NamesStore.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		F66BB2C5289A751A00AB9668 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
 				F66BB25B2899CA8900AB9668 /* SaveNameUseCase.swift */,
 				F66BB25D2899CB7F00AB9668 /* GetNamesUseCase.swift */,
 				F66BB2602899D1D900AB9668 /* DeleteNamesUseCase.swift */,
 			);
-			path = Example;
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
