@@ -15,22 +15,13 @@ final class StoreExampleViewModelImpl: StoreExampleViewModel {
     
     weak var delegate: StoreExampleViewModelDelegate?
     
-    private let saveNameUseCase: SaveNameUseCase
-    private let getNamesUseCase: GetNamesUseCase
-    private let deleteNamesUseCase: DeleteNamesUseCase
-    
-    init(
-        saveNameUseCase: SaveNameUseCase = SaveNameUseCaseImpl(),
-        getNamesUseCase: GetNamesUseCase = GetNamesUseCaseImpl(),
-        deleteNamesUseCase: DeleteNamesUseCase = DeleteNamesUseCaseImpl()
-    ) {
-        self.saveNameUseCase = saveNameUseCase
-        self.getNamesUseCase = getNamesUseCase
-        self.deleteNamesUseCase = deleteNamesUseCase
-    }
+    private let saveNameUseCase: SaveNameUseCase = SaveNameUseCaseImpl()
+    private let getNamesUseCase: GetNamesUseCase = GetNamesUseCaseImpl()
+    private let deleteNamesUseCase: DeleteNamesUseCase = DeleteNamesUseCaseImpl()
     
     func fetchNames() {
         delegate?.showLoading()
+        
         getNamesUseCase.execute { result in
             self.handleFetchResult(result: result)
             self.delegate?.hideLoading()
@@ -39,6 +30,7 @@ final class StoreExampleViewModelImpl: StoreExampleViewModel {
     
     func saveName(name: String) {
         delegate?.showLoading()
+        
         saveNameUseCase.execute(name: name) { result in
             switch result {
             case .success:

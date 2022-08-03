@@ -13,9 +13,7 @@ final class PublisherOperatorsViewController: BaseViewController {
     
     override func onSubscribeTapped() {
         log("Subscribed!")
-        
-        publisher = PassthroughSubject()
-        
+                
         publisher
             .dropFirst()
             .compactMap { $0 }
@@ -24,7 +22,6 @@ final class PublisherOperatorsViewController: BaseViewController {
             .sink { value in
                 self.log("Received even number - \(value)")
             }.store(in: &cancellables)
-        
     }
     
     override func onEmitTapped() {

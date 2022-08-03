@@ -74,6 +74,18 @@ final class UIValidationViewController: UIViewController {
             .store(in: &cancellables)
     }
     
+    private func setupActions() {
+        input1.addAction(.init(handler: { [weak self] _ in
+            self?.input1Subject.send(self?.input1.text)
+        }), for: .editingChanged)
+        
+        input2.addAction(.init(handler: { [weak self] _ in
+            self?.input2Subject.send(self?.input2.text)
+        }), for: .editingChanged)
+    }
+}
+
+extension UIValidationViewController {
     private func setupViews() {
         view.addSubview(header)
         view.addSubview(stackView)
@@ -93,15 +105,5 @@ final class UIValidationViewController: UIViewController {
             view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: 16),
             button.heightAnchor.constraint(equalToConstant: 40)
         ])
-    }
-    
-    private func setupActions() {
-        input1.addAction(.init(handler: { [weak self] _ in
-            self?.input1Subject.send(self?.input1.text)
-        }), for: .editingChanged)
-        
-        input2.addAction(.init(handler: { [weak self] _ in
-            self?.input2Subject.send(self?.input2.text)
-        }), for: .editingChanged)
     }
 }

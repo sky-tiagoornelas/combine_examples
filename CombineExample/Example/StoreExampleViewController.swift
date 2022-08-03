@@ -58,44 +58,18 @@ final class StoreExampleViewController: UIViewController {
         viewModel.fetchNames()
     }
     
-    private func setupViews() {
-        view.addSubview(input)
-        view.addSubview(loader)
-        view.addSubview(results)
-        view.addSubview(buttonsStack)
-        
-        NSLayoutConstraint.activate([
-            input.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            input.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
-            view.trailingAnchor.constraint(equalTo: input.trailingAnchor, constant: 32),
-            input.heightAnchor.constraint(equalToConstant: 40),
-            
-            loader.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loader.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
-            results.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            results.topAnchor.constraint(equalTo: input.bottomAnchor, constant: 16),
-            view.trailingAnchor.constraint(equalTo: results.trailingAnchor, constant: 8),
-            buttonsStack.topAnchor.constraint(greaterThanOrEqualTo: results.bottomAnchor, constant: 8),
-            
-            buttonsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: buttonsStack.trailingAnchor),
-            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: buttonsStack.bottomAnchor, constant: 16)
-        ])
-    }
-    
-    func onSaveTapped() {
+    private func onSaveTapped() {
         if let text = input.text, !text.isEmpty {
             viewModel.saveName(name: text)
             input.text = ""
         }
     }
     
-    func onDeleteTapped() {
+    private func onDeleteTapped() {
         viewModel.deleteNames()
     }
     
-    func format(array: [String]) -> String {
+    private func format(array: [String]) -> String {
         return array.joined(separator: ", ")
     }
 }
@@ -125,5 +99,33 @@ extension StoreExampleViewController: StoreExampleViewModelDelegate {
         DispatchQueue.main.async {
             self.loader.stopAnimating()
         }
+    }
+}
+
+extension StoreExampleViewController {
+    private func setupViews() {
+        view.addSubview(input)
+        view.addSubview(loader)
+        view.addSubview(results)
+        view.addSubview(buttonsStack)
+        
+        NSLayoutConstraint.activate([
+            input.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            input.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            view.trailingAnchor.constraint(equalTo: input.trailingAnchor, constant: 32),
+            input.heightAnchor.constraint(equalToConstant: 40),
+            
+            loader.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loader.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            results.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            results.topAnchor.constraint(equalTo: input.bottomAnchor, constant: 16),
+            view.trailingAnchor.constraint(equalTo: results.trailingAnchor, constant: 8),
+            buttonsStack.topAnchor.constraint(greaterThanOrEqualTo: results.bottomAnchor, constant: 8),
+            
+            buttonsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: buttonsStack.trailingAnchor),
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: buttonsStack.bottomAnchor, constant: 16)
+        ])
     }
 }

@@ -24,6 +24,8 @@ final class FutureViewController: BaseViewController {
             self.count += 1
         }
                 
+        log("Subscription started")
+
         publisher
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
@@ -36,7 +38,6 @@ final class FutureViewController: BaseViewController {
             self?.log("Received \(value)")
         }).store(in: &cancellables)
         
-        log("Subscription started")
     }
 }
 
