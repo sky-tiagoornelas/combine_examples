@@ -9,23 +9,23 @@ final class NamesStoreImpl: NamesStore {
     
     static let shared = NamesStoreImpl()
     
-    private var namesDb = [String]()
+    private var namesStorage = [String]()
     
     private init() {}
     
     func set(names: [String]) {
-        namesDb = names
+        namesStorage = names
     }
     
     func add(newName: String) {
-        namesDb.append(newName)
+        namesStorage.append(newName)
     }
     
     func get() -> [String] {
-        return namesDb
+        return namesStorage
     }
     
     func remove() {
-        namesDb.removeAll()
+        namesStorage.removeAll()
     }
 }
