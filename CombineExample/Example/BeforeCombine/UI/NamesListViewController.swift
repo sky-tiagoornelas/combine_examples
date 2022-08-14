@@ -1,8 +1,8 @@
 import UIKit
 
-final class StoreExampleViewController: UIViewController {
+final class NamesListViewController: UIViewController {
     
-    private let viewModel = StoreExampleViewModelImpl()
+    private let viewModel = NamesListViewModelImpl()
     
     private lazy var input: UITextField = {
         let field = UITextField()
@@ -74,7 +74,7 @@ final class StoreExampleViewController: UIViewController {
     }
 }
 
-extension StoreExampleViewController: StoreExampleViewModelDelegate {
+extension NamesListViewController: NamesListViewModelDelegate {
     func onErrorSaving() {
         DispatchQueue.main.async {
             let alertViewController = UIAlertController(title: "Error", message: "Error saving name. Please try again later", preferredStyle: .alert)
@@ -102,7 +102,7 @@ extension StoreExampleViewController: StoreExampleViewModelDelegate {
     }
 }
 
-extension StoreExampleViewController {
+extension NamesListViewController {
     private func setupViews() {
         view.addSubview(input)
         view.addSubview(loader)

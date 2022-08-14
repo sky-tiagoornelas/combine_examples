@@ -21,8 +21,8 @@
 		F64723462898049000D4AD8E /* PublisherOperatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64723452898049000D4AD8E /* PublisherOperatorsViewController.swift */; };
 		F66BB24A2898798100AB9668 /* UIValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB2492898798100AB9668 /* UIValidationViewController.swift */; };
 		F66BB24C28991B4000AB9668 /* UsernameRemoteValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB24B28991B4000AB9668 /* UsernameRemoteValidationViewController.swift */; };
-		F66BB24F2899BF0000AB9668 /* StoreExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB24E2899BF0000AB9668 /* StoreExampleViewController.swift */; };
-		F66BB2522899BFEA00AB9668 /* StoreExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB2512899BFEA00AB9668 /* StoreExampleViewModel.swift */; };
+		F66BB24F2899BF0000AB9668 /* NamesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB24E2899BF0000AB9668 /* NamesListViewController.swift */; };
+		F66BB2522899BFEA00AB9668 /* NamesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB2512899BFEA00AB9668 /* NamesListViewModel.swift */; };
 		F66BB2562899C11100AB9668 /* NamesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB2552899C11100AB9668 /* NamesRepository.swift */; };
 		F66BB25A2899C44100AB9668 /* NamesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB2592899C44100AB9668 /* NamesStore.swift */; };
 		F66BB25C2899CA8900AB9668 /* SaveNameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66BB25B2899CA8900AB9668 /* SaveNameUseCase.swift */; };
@@ -47,8 +47,8 @@
 		F64723452898049000D4AD8E /* PublisherOperatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherOperatorsViewController.swift; sourceTree = "<group>"; };
 		F66BB2492898798100AB9668 /* UIValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIValidationViewController.swift; sourceTree = "<group>"; };
 		F66BB24B28991B4000AB9668 /* UsernameRemoteValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameRemoteValidationViewController.swift; sourceTree = "<group>"; };
-		F66BB24E2899BF0000AB9668 /* StoreExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreExampleViewController.swift; sourceTree = "<group>"; };
-		F66BB2512899BFEA00AB9668 /* StoreExampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreExampleViewModel.swift; sourceTree = "<group>"; };
+		F66BB24E2899BF0000AB9668 /* NamesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesListViewController.swift; sourceTree = "<group>"; };
+		F66BB2512899BFEA00AB9668 /* NamesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesListViewModel.swift; sourceTree = "<group>"; };
 		F66BB2552899C11100AB9668 /* NamesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesRepository.swift; sourceTree = "<group>"; };
 		F66BB2592899C44100AB9668 /* NamesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesStore.swift; sourceTree = "<group>"; };
 		F66BB25B2899CA8900AB9668 /* SaveNameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNameUseCase.swift; sourceTree = "<group>"; };
@@ -109,11 +109,8 @@
 		F66BB2502899BF0300AB9668 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				F66BB2C5289A751A00AB9668 /* UseCases */,
-				F66BB24E2899BF0000AB9668 /* StoreExampleViewController.swift */,
-				F66BB2512899BFEA00AB9668 /* StoreExampleViewModel.swift */,
-				F66BB2552899C11100AB9668 /* NamesRepository.swift */,
-				F66BB2592899C44100AB9668 /* NamesStore.swift */,
+				F6E2AA0E28A96FA7000A97DC /* AfterCombine1 */,
+				F6E2AA0D28A96F96000A97DC /* BeforeCombine */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -126,6 +123,57 @@
 				F66BB2602899D1D900AB9668 /* DeleteNamesUseCase.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		F6E2AA0928A96F28000A97DC /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				F66BB2552899C11100AB9668 /* NamesRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		F6E2AA0A28A96F3F000A97DC /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				F66BB2592899C44100AB9668 /* NamesStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		F6E2AA0B28A96F61000A97DC /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F66BB24E2899BF0000AB9668 /* NamesListViewController.swift */,
+				F66BB2512899BFEA00AB9668 /* NamesListViewModel.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F6E2AA0D28A96F96000A97DC /* BeforeCombine */ = {
+			isa = PBXGroup;
+			children = (
+				F6E2AA0B28A96F61000A97DC /* UI */,
+				F6E2AA0A28A96F3F000A97DC /* Stores */,
+				F6E2AA0928A96F28000A97DC /* Repositories */,
+				F66BB2C5289A751A00AB9668 /* UseCases */,
+			);
+			path = BeforeCombine;
+			sourceTree = "<group>";
+		};
+		F6E2AA0E28A96FA7000A97DC /* AfterCombine1 */ = {
+			isa = PBXGroup;
+			children = (
+				F6E2AA0F28A96FB0000A97DC /* UI */,
+			);
+			path = AfterCombine1;
+			sourceTree = "<group>";
+		};
+		F6E2AA0F28A96FB0000A97DC /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,8 +262,8 @@
 				F64723292896E6D100D4AD8E /* SceneDelegate.swift in Sources */,
 				F66BB24A2898798100AB9668 /* UIValidationViewController.swift in Sources */,
 				F66BB25A2899C44100AB9668 /* NamesStore.swift in Sources */,
-				F66BB24F2899BF0000AB9668 /* StoreExampleViewController.swift in Sources */,
-				F66BB2522899BFEA00AB9668 /* StoreExampleViewModel.swift in Sources */,
+				F66BB24F2899BF0000AB9668 /* NamesListViewController.swift in Sources */,
+				F66BB2522899BFEA00AB9668 /* NamesListViewModel.swift in Sources */,
 				F64723412897E6E600D4AD8E /* DeferredWithFutureViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,19 +1,19 @@
-protocol StoreExampleViewModel {
+protocol NamesListViewModel {
     func fetchNames()
     func saveName(name: String)
     func deleteNames()
 }
 
-protocol StoreExampleViewModelDelegate: AnyObject {
+protocol NamesListViewModelDelegate: AnyObject {
     func onErrorSaving()
     func onNames(names: [String])
     func showLoading()
     func hideLoading()
 }
 
-final class StoreExampleViewModelImpl: StoreExampleViewModel {
+final class NamesListViewModelImpl: NamesListViewModel {
     
-    weak var delegate: StoreExampleViewModelDelegate?
+    weak var delegate: NamesListViewModelDelegate?
     
     private let saveNameUseCase: SaveNameUseCase = SaveNameUseCaseImpl()
     private let getNamesUseCase: GetNamesUseCase = GetNamesUseCaseImpl()
@@ -63,7 +63,7 @@ final class StoreExampleViewModelImpl: StoreExampleViewModel {
     }
 }
 
-extension StoreExampleViewModelImpl {
+extension NamesListViewModelImpl {
     private func handleFetchResult(result: Result<[String], Error>) {
         switch result {
         case let .success(names):
