@@ -4,8 +4,7 @@ protocol DeleteNamesUseCase {
 
 final class DeleteNamesUseCaseImpl: DeleteNamesUseCase {
   
-    let namesRepository: NamesRepository
-    
+    private let namesRepository: NamesRepository
     init(namesRepository: NamesRepository = NamesRepositoryImpl.shared) {
         self.namesRepository = namesRepository
     }

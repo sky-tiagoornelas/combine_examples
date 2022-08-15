@@ -3,8 +3,8 @@ protocol GetNamesUseCase {
 }
 
 final class GetNamesUseCaseImpl: GetNamesUseCase {
-    let namesRepository: NamesRepository
     
+    private let namesRepository: NamesRepository
     init(namesRepository: NamesRepository = NamesRepositoryImpl.shared) {
         self.namesRepository = namesRepository
     }

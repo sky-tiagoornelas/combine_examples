@@ -6,8 +6,7 @@ protocol ObserveNamesUseCase {
 
 final class ObserveNamesUseCaseImpl: ObserveNamesUseCase {
   
-    let namesRepository: NamesRepository
-    
+    private let namesRepository: NamesRepository
     init(namesRepository: NamesRepository = NamesRepositoryImpl.shared) {
         self.namesRepository = namesRepository
     }
