@@ -24,6 +24,7 @@ final class NamesListViewModelImpl1: NamesListViewModel1 {
         showLoading.send(true)
         self.getNamesUseCase.execute { result in
             self.handleErrorIfNeeded(result: result)
+            self.showLoading.send(false)
         }
     }
     
@@ -31,6 +32,7 @@ final class NamesListViewModelImpl1: NamesListViewModel1 {
         showLoading.send(true)
         saveNameUseCase.execute(name: name) { result in
             self.handleErrorIfNeeded(result: result)
+            self.showLoading.send(false)
         }
     }
 
@@ -38,6 +40,7 @@ final class NamesListViewModelImpl1: NamesListViewModel1 {
         showLoading.send(true)
         deleteNamesUseCase.execute() { result in
             self.handleErrorIfNeeded(result: result)
+            self.showLoading.send(false)
         }
     }
     
@@ -49,6 +52,5 @@ final class NamesListViewModelImpl1: NamesListViewModel1 {
         if case let .failure(error) = result {
             self.showError.send(error)
         }
-        self.showLoading.send(false)
     }
 }

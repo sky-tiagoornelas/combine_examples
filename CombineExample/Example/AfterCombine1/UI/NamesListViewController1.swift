@@ -4,7 +4,8 @@ import UIKit
 final class NamesListViewController1: UIViewController {
     
     private var cancellables = Set<AnyCancellable>()
-    
+    private var onInputText = CurrentValueSubject<String?, Never>(nil)
+
     private let viewModel: NamesListViewModel1 = NamesListViewModelImpl1()
     
     private lazy var input: UITextField = {
@@ -80,6 +81,19 @@ final class NamesListViewController1: UIViewController {
             .receive(on: DispatchQueue.main)
             .map { self.format(array: $0) }
             .assign(to: \.text, on: results)
+            .store(in: &cancellables)
+        
+        input.addAction(.init(handler: { [weak self] _ in
+            self?.onInputText.send(self?.input.text)
+        }), for: .editingChanged)
+        
+        onInputText
+            .receive(on: DispatchQueue.main)
+            .map {
+                guard let text = $0 else { return false }
+                return text.count > 3
+            }
+            .assign(to: \.isEnabled, on: saveButton)
             .store(in: &cancellables)
     }
     
