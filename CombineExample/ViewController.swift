@@ -10,7 +10,8 @@ class ViewController: UIViewController {
         .publisherOperators,
         .uiValidation,
         .uiRemoteValidation,
-        .storeExample
+        .storeExample,
+        .storeExample1
     ]
     
     override func viewDidLoad() {
@@ -55,7 +56,9 @@ extension ViewController: UITableViewDelegate {
         case .uiRemoteValidation:
             vc = UsernameRemoteValidationViewController()
         case .storeExample:
-            vc = StoreExampleViewController()
+            vc = NamesListViewController()
+        case .storeExample1:
+            vc = NamesListViewController1()
         }
         
         if let vc = vc {
@@ -75,4 +78,5 @@ enum Screen: String {
     case uiValidation = "UI Validation"
     case uiRemoteValidation = "UI Remote Validation"
     case storeExample = "Store Example"
+    case storeExample1 = "Store Example Combine v1"
 }

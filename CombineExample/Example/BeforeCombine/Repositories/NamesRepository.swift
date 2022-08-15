@@ -1,9 +1,11 @@
+import Combine
 import Foundation
 
 protocol NamesRepository {
     func save(newName: String, completion: @escaping (Result<Void, Error>) -> Void)
     func fetch(completion: @escaping (Result<[String], Error>) -> Void)
     func deleteAll(completion: @escaping (Result<Void, Error>) -> Void)
+    func observe() -> AnyPublisher<[String], Never>
 }
 
 final class NamesRepositoryImpl: NamesRepository {
@@ -41,5 +43,9 @@ final class NamesRepositoryImpl: NamesRepository {
             self.namesStore.remove()
             completion(.success(()))
         }
+    }
+    
+    func observe() -> AnyPublisher<[String], Never> {
+        return namesStore.observe()
     }
 }
